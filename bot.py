@@ -14,6 +14,13 @@ from database.users_chats_db import db
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
 from utils import temp
 
+from aiohttp import web
+from plugins import web_server
+from Script import script
+
+
+PORT = "8080"
+
 class Bot(Client):
 
     def __init__(self):
@@ -42,10 +49,16 @@ class Bot(Client):
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
+         #LOGO
+        logging.info(script.LOGO)
+        ####### ONE THING #######
+        app = web.AppRunner(await web_server())
+        await app.setup()
+        bind_address = "0.0.0.0"
 
     async def stop(self, *args):
         await super().stop()
-        logging.info("Bot stopped. Bye.")
+        logging.info("Bot Stopped MYRE💤.")
 
 
 app = Bot()
