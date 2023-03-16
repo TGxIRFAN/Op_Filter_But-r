@@ -442,7 +442,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                             InlineKeyboardButton('📥 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 𝖫𝗂𝗇𝗄 📥 ', url = msg.link)
                         ],                       
                         [
-                            InlineKeyboardButton("⚠️ 𝖢𝖺𝗇'𝗍 𝖠𝖼𝖼𝖾𝗌𝗌 ❓ 𝖢𝗅𝗂𝖼𝗄 𝖧𝖾𝗋𝖾 ⚠️", url=f'https://t.me/+tsVElWFZakwyZTI1')
+                            InlineKeyboardButton("⚠️ 𝖢𝖺𝗇'𝗍 𝖠𝖼𝖼𝖾𝗌𝗌 ❓ 𝖢𝗅𝗂𝖼𝗄 𝖧𝖾𝗋𝖾 ⚠️", url=f'https://t.me/wudixh12')
                         ]
                     ]
                 )
@@ -531,17 +531,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝖨𝗆𝖽𝖻', callback_data='imbd'),
             InlineKeyboardButton('𝖢𝗈𝗇𝗇𝖾𝖼𝗍𝗂𝗈𝗇', callback_data='coct')
             ],[
-            InlineKeyboardButton('𝖥𝗎𝗇', callback_data='fun'),
             InlineKeyboardButton('𝖠𝖻𝗈𝗎𝗍', callback_data='about_menu'),
             InlineKeyboardButton('𝖲𝗍𝖺𝗍𝗎𝗌', callback_data='stats')
             ],[
-            InlineKeyboardButton('𝖡𝖺𝗇𝗌', callback_data='ban'),
-            InlineKeyboardButton('𝖢𝗈𝗏𝗂𝖽', callback_data='covid'),
             InlineKeyboardButton('𝖯𝗂𝗇', callback_data='pin')
             ],[
-            InlineKeyboardButton('𝖨𝗇𝖿𝗈', callback_data='info'),
-            InlineKeyboardButton('𝖩𝗌𝗈𝗇', callback_data='json'),
-            InlineKeyboardButton('𝖢𝖺𝗋𝖻𝗈𝗇', callback_data='carbon')
+            InlineKeyboardButton('𝖨𝗇𝖿𝗈', callback_data='info')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -578,26 +573,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "weather":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.WEATHER_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "cntry":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.CNTRY_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
     elif query.data == "source":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='start')
@@ -609,147 +584,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 reply_markup=reply_markup,
                 parse_mode='html'
             )
-    elif query.data == "gtrans":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.GTRANS_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "urlshrt":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.SHORT_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "trnt":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.TRNT_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "tts":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.TTS_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "mute":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.MUTE_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "tts":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.TTS_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "song":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.SONG_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "json":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.JSON_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "covid":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.COVID_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )         
-    elif query.data == "ping":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.PING_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "fun":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.FUN_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "ban":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.BAN_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "purge":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.PURGE_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )
-    elif query.data == "tgraph":
-        buttons = [[
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.TGRAPH_TXT,
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )       
-    elif query.data == "info":
+     elif query.data == "info":
         buttons = [[
             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
         ]]
@@ -964,7 +799,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "close":
         await query.message.delete()
     elif query.data == 'tips':
-        await query.answer("sᴇɴᴅ ᴄᴏʀʀᴇᴄᴛ ᴍᴏᴠɪᴇ/sᴇʀɪᴇs ɴᴀᴍᴇ ғᴏʀ ʙᴇᴛᴛᴇʀ ʀᴇsᴜʟᴛs .\nᴛᴏ ɢᴇᴛ ʙᴇᴛᴛᴇʀ ʀᴇsᴜʟᴛ ғᴏʀ sᴇʀɪᴇs sᴇᴀʀᴄʜ ʟɪᴋᴇ ᴇxᴀᴍᴘʟᴇ ɢɪᴠᴇɴ, Eg - Peaky Blinders S01E01\n\n © Miss Ava Bot", True)
+        await query.answer("sᴇɴᴅ ᴄᴏʀʀᴇᴄᴛ ᴍᴏᴠɪᴇ/sᴇʀɪᴇs ɴᴀᴍᴇ ғᴏʀ ʙᴇᴛᴛᴇʀ ʀᴇsᴜʟᴛs .\nᴛᴏ ɢᴇᴛ ʙᴇᴛᴛᴇʀ ʀᴇsᴜʟᴛ ғᴏʀ sᴇʀɪᴇs sᴇᴀʀᴄʜ ʟɪᴋᴇ ᴇxᴀᴍᴘʟᴇ ɢɪᴠᴇɴ, Eg - Peaky Blinders S01E01\n\n © ᴋᴜᴛᴛᴜ ʙᴏᴛ™ 🤖", True)
     try: await query.answer('Your Results are there in Filter Button') 
     except: pass
 
@@ -1081,7 +916,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>Hai 👋 {message.from_user.mention}</b> 😍\n\n<b>📁 Found ✨  Files For Your Query : {search} 👇</b> "
+        cap = f"<b>Hᴇʏ {message.from_user.mention}, Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Iɴ Mʏ Dᴀᴛᴀʙᴀsᴇ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ {search}.</b>"
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
