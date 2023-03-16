@@ -1,12 +1,12 @@
 if [ -z $UPSTREAM_REPO ]
 then
   echo "Cloning main Repository"
-  git clone https://github.com/GreatBots/TovinoBotV3.git /TovinoBotV3
+  git clone https://github.com/GreatBots/TovinoBotV3.git /AutoFilter
 else
   echo "Cloning Custom Repo from $UPSTREAM_REPO "
-  git clone $UPSTREAM_REPO /TovinoBotV3
+  git clone $UPSTREAM_REPO /AutoFilter
 fi
-cd /TovinoBotV3
+cd /AutoFilter
 pip3 install -U -r requirements.txt
-echo "Starting Bot...."
+echo "Starting Bot..💦💦💦.."
 python3 bot.py
