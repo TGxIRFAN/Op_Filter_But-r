@@ -1,4 +1,3 @@
-from asyncio.log import logger
 import re
 from os import environ
 
@@ -10,15 +9,6 @@ def is_enabled(value, default):
         return False
     else:
         return default
-
-def redirected_env(value):
-    value = str(value)
-    if value.lower() in ['chat', 'group', 'channel', 'supergroup', 'true']:
-        return 'Chat'
-    elif value.lower() in ['user', '0', 'pm', 'personal', 'bot', 'bot pm', 'false']:
-        return 'PM'
-    else:
-        return 'Chat'
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
@@ -43,19 +33,18 @@ AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "")
+DATABASE_NAME = environ.get('DATABASE_NAME', "Bot")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
-PORT = environ.get("PORT", "8080")
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'wudixh')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'im_goutham_josh')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
-SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "False")), False)
-CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", "\n\n<b>🤖 Made By [𝐺𝛩𝑈𝑇𝛨𝛥𝛭 𝑆𝛯𝑅] (@im_goutham_josh)</b>")
+SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), True)
+CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", "📂 <b><em>File Name</em>: <code>|{file_name}</code></b> \n\n🖇 <b><em>File Size</em>: <code>{file_size}</code></b> \nᴊᴏɪɴⁿᵒʷ[Eʟᴅᴏʀᴀᴅᴏ☢](https://t.me/wudixh)\n[ᴋᴜᴛᴛᴜ ʙᴏᴛ™ 🤖](https://telegram.me/im_kuttu_bot)")
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
-IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b>🏷 Title: <a href={url}>{title}</a>\n🎭 Genres: {genres}\n📆 Year: <a href={url}/releaseinfo>{year}</a>\n🌟 Rating: <a href={url}/ratings>{rating}</a> / 10\n<b>☀️ Languages:</b> #{languages}\n</b>")
+IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b>Query: {query}</b> \n‌‌‌‌IMDb Data:\n\n🏷 Title: <a href={url}>{title}</a>\n🎭 Genres: {genres}\n📆 Year: <a href={url}/releaseinfo>{year}</a>\n🌟 Rating: <a href={url}/ratings>{rating}</a> / 10")
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
@@ -64,11 +53,6 @@ FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '')).
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
-
-DELETE_TIME = int(environ.get('DELETE_TIME', 300))
-START_IMAGE_URL = environ.get('START_IMAGE_URL', "")
-UNAUTHORIZED_CALLBACK_TEXT = (environ.get('UNAUTHORIZED_CALLBACK_TEXT', "𝙏𝙃𝙄𝙎 𝙄𝙎 𝙉𝙊𝙏 𝙂𝙐𝘿 𝘿𝙐𝘿𝙀"))[:200]
-REDIRECT_TO = (environ.get('REDIRECT_TO', 0))
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
