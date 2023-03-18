@@ -136,7 +136,7 @@ async def advantage_spoll_choker(bot, query):
             await auto_filter(bot, query, k)
         else:
             k = await query.message.edit('ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ 💌\nʀᴇᴘᴏʀᴛ ᴛᴏ ᴀᴅᴍɪɴ \n@im_goutham_josh')
-            await asyncio.sleep(10)
+            await asyncio.sleep(9)
             await k.delete()
 
 
