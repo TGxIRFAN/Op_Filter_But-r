@@ -19,6 +19,8 @@ from Script import script
 from plugins import web_server
 from aiohttp import web
 
+PORT = "8080"
+
 class Bot(Client):
 
     def __init__(self):
