@@ -1,4 +1,4 @@
-pyrogram>=2.0.30
+git+https://github.com/GouthamSER/pyrogram
 git+https://github.com/cinemagoer/cinemagoer
 tgcrypto
 pymongo[srv]==3.12.3
