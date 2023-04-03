@@ -9,4 +9,5 @@ RUN pip3 install -U pip && pip3 install -U -r requirements.txt
 RUN mkdir /EvaMaria
 WORKDIR /EvaMaria
 COPY . .
-CMD ["/bin/bash", "/start.sh"]
+
+CMD ["python3", "bot.py"]
