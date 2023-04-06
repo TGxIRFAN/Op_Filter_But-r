@@ -84,6 +84,18 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
+#button MOVIE AND SERIES        
+    btn.insert(0, 
+        [
+            InlineKeyboardButton(f' 🎬 {search} 🎬 ', 'qinfo')
+        ]
+    )
+    btn.insert(1, 
+         [
+             InlineKeyboardButton(f'📟 ᴍᴏᴠɪᴇ', 'minfo'),
+             InlineKeyboardButton(f'🔰 sᴇʀɪᴇs', 'sinfo')
+         ]
+    )
 
     if 0 < offset <= 10:
         off_set = 0
@@ -93,20 +105,20 @@ async def next_page(bot, query):
         off_set = offset - 10
     if n_offset == 0:
         btn.append(
-            [InlineKeyboardButton("← BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+            [InlineKeyboardButton("← Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
              InlineKeyboardButton(f"📃 Pages {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
                                   callback_data="pages")]
         )
     elif off_set is None:
         btn.append(
             [InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
-             InlineKeyboardButton("NEXT →", callback_data=f"next_{req}_{key}_{n_offset}")])
+             InlineKeyboardButton("Nᴇxᴛ →", callback_data=f"next_{req}_{key}_{n_offset}")])
     else:
         btn.append(
             [
-                InlineKeyboardButton("← BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+                InlineKeyboardButton("← Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
                 InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
-                InlineKeyboardButton("NEXT →", callback_data=f"next_{req}_{key}_{n_offset}")
+                InlineKeyboardButton("Nᴇxᴛ →", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
         )
     try:
@@ -404,6 +416,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "pages":
         await query.answer()
+
+#MOVIE AND SERIES BUTTON FORMAT IN SCRIPT.py    
+    elif query.data == "minfo":
+        await query.answer(text=script.MINFO, show_alert=True)
+
+    elif query.data == "sinfo":
+        await query.answer(text=script.SINFO, show_alert=True)
+        
+    
     elif query.data == "start":
         buttons = [[
             InlineKeyboardButton('+𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽+', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
@@ -671,6 +692,19 @@ async def auto_filter(client, msg, spoll=False):
             ]
             for file in files
         ]
+    
+#MOVIE AND SERIES BUTTON    
+    btn.insert(0, 
+        [
+            InlineKeyboardButton(f' 🎬 {search} 🎬 ', 'qinfo')
+        ]
+    )
+    btn.insert(1, 
+         [     
+             InlineKeyboardButton(f'📟 ᴍᴏᴠɪᴇ', 'minfo'),
+             InlineKeyboardButton(f'🔰 sᴇʀɪᴇs', 'sinfo')
+         ]
+    )
 
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
@@ -719,7 +753,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"Here is what i found for your query {search}"
+        cap = f"<b>Hᴇʏ {message.from_user.mention}, Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Iɴ Mʏ Dᴀᴛᴀʙᴀsᴇ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ {search}.</b>"
     if imdb and imdb.get('poster'):
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
