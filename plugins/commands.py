@@ -23,10 +23,10 @@ async def start(client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         buttons = [
             [
-                InlineKeyboardButton('🤖 𝗨𝗽𝗱𝗮𝘁𝗲𝘀', url='https://t.me/wudixh13')
+                InlineKeyboardButton('Uᴘᴅᴀᴛᴇs📢', url='https://t.me/wudixh13')
             ],
             [
-                InlineKeyboardButton('ℹ️ 𝗛𝗲𝗹𝗽', url=f"https://t.me/{temp.U_NAME}?start=help"),
+                InlineKeyboardButton('🛡Hᴇʟᴘ🛡', url=f"https://t.me/{temp.U_NAME}?start=help"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -42,10 +42,10 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('+𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽+', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('+Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ+', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
-            InlineKeyboardButton('𝗛𝗲𝗹𝗽', callback_data='help'),
-            InlineKeyboardButton('𝗔𝗯𝗼𝘂𝘁', callback_data='about')
+            InlineKeyboardButton('🛡Hᴇʟᴘ🛡', callback_data='help'),
+            InlineKeyboardButton('Aʙᴏᴜᴛ📓', callback_data='about')
        ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         m=await message.reply_sticker("CAACAgUAAxkBAAEbmsJkE1COdF3LgmqU0LVgP-yg3ZHNGwACnAADyJRkFHOPAAHz2sWF_B4E") 
@@ -81,17 +81,17 @@ async def start(client, message):
                 btn.append([InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**Please Join My Updates Channel to use this Bot!**",
+            text="**Pʟᴇᴀsᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ!**",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.MARKDOWN
             )
         return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('+𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽+', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('+Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ+', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
-            InlineKeyboardButton('𝗛𝗲𝗹𝗽', callback_data='help'),
-            InlineKeyboardButton('𝗔𝗯𝗼𝘂𝘁', callback_data='about')
+            InlineKeyboardButton('🛡Hᴇʟᴘ🛡', callback_data='help'),
+            InlineKeyboardButton('Aʙᴏᴜᴛ📓', callback_data='about')
        ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
