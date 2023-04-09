@@ -43,14 +43,14 @@ async def give_filter(client, message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("ᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ sɪʀ👀", show_alert=True)
+        return await query.answer("Tʜɪs Is Nᴏᴛ Fᴏʀ Yᴏᴜ👀", show_alert=True)
     try:
         offset = int(offset)
     except:
         offset = 0
     search = BUTTONS.get(key)
     if not search:
-        await query.answer("ʏᴏᴜ ᴀʀᴇ ᴜsɪɴɢ ᴏɴᴇ ᴏғ ᴍʏ ᴏʟᴅ ᴍᴇssᴀɢᴇs, ᴘʟᴇᴀsᴇ sᴇɴᴅ ᴛʜᴇ ʀᴇᴏ̨ᴜᴇsᴛ ᴀɢᴀɪɴ.", show_alert=True)
+        await query.answer("You Are Using My Old Message🔧, \nPlease Sent Request Again...", show_alert=True)
         return
 
     files, n_offset, total = await get_search_results(search, offset=offset, filter=True)
@@ -92,8 +92,8 @@ async def next_page(bot, query):
     )
     btn.insert(1, 
          [
-             InlineKeyboardButton(f'📟 ᴍᴏᴠɪᴇ', 'minfo'),
-             InlineKeyboardButton(f'🔰 sᴇʀɪᴇs', 'sinfo')
+             InlineKeyboardButton(f'📟 Mᴏᴠɪᴇs', 'minfo'),
+             InlineKeyboardButton(f'🔰 Sᴇʀɪᴇs', 'sinfo')
          ]
     )
 
@@ -134,14 +134,14 @@ async def next_page(bot, query):
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer("ᴛʜɪs ɪs ɴᴏᴛ❌ғᴏʀ ʏᴏᴜ sɪʀ", show_alert=True)
+        return await query.answer("Tʜɪs Is Nᴏᴛ Fᴏʀ Yᴏᴜ", show_alert=True)
     if movie_ == "close_spellcheck":
         return await query.message.delete()
     movies = SPELL_CHECK.get(query.message.reply_to_message.id)
     if not movies:
-        return await query.answer("Yᴏᴜ ᴀʀᴇ ᴄʟɪᴄᴋɪɴɢ ᴏɴ ᴀɴ ᴏʟᴅ ʙᴜᴛᴛᴏɴ ᴡʜɪᴄʜ ɪs ᴇxᴘɪʀᴇᴅ⚠️", show_alert=True)
+        return await query.answer("Yᴏᴜ Aʀᴇ Cʟɪᴄᴋɪɴɢ Oɴ Aɴ Oʟᴅ Bᴜᴛᴛᴏɴ Wʜɪᴄʜ Is Exᴘɪʀᴇᴅ⚠️", show_alert=True)
     movie = movies[(int(movie_))]
-    await query.answer('Cʜᴇᴄᴋɪɴɢ ғᴏʀ Mᴏᴠɪᴇ ɪɴ ᴅᴀᴛᴀʙᴀsᴇ..💨💨💨')
+    await query.answer('Cʜᴇᴄᴋɪɴɢ Fᴏʀ Mᴏᴠɪᴇ IN DB..💨💨💨')
     k = await manual_filters(bot, query.message, text=movie)
     if k == False:
         files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
@@ -170,11 +170,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     chat = await client.get_chat(grpid)
                     title = chat.title
                 except:
-                    await query.message.edit_text("Mᴀᴋᴇ sᴜʀᴇ I'ᴍ ᴘʀᴇsᴇɴᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ!!", quote=True)
+                    await query.message.edit_text("Mᴀᴋᴇ Sᴜʀᴇ I'ᴍ Pʀᴇsᴇɴᴛ Iɴ Yᴏᴜʀ Gʀᴏᴜᴘ!!", quote=True)
                     return await query.answer('Piracy Is Crime')
             else:
                 await query.message.edit_text(
-                    "I'ᴍ ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘs!\nCʜᴇᴄᴋ /ᴄᴏɴɴᴇᴄᴛɪᴏɴs ᴏʀ ᴄᴏɴɴᴇᴄᴛ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘs",
+                    "I'ᴍ Nᴏᴛ Cᴏɴɴᴇᴄᴛᴇᴅ Tᴏ Aɴʏ Gʀᴏᴜᴘs!\nCʜᴇᴄᴋ /Cᴏɴɴᴇᴄᴛɪᴏɴs Oʀ Cᴏɴɴᴇᴄᴛ ᴛᴏ Aɴʏ Gʀᴏᴜᴘs",
                     quote=True
                 )
                 return await query.answer('Piracy Is Crime')
@@ -209,7 +209,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 except:
                     pass
             else:
-                await query.answer("ᴛʜɪs ɪs ɴᴏᴛ❌ғᴏʀ ʏᴏᴜ sɪʀ", show_alert=True)
+                await query.answer("Tʜɪs Is Nᴏᴛ Fᴏʀ Yᴏᴜ", show_alert=True)
     elif "groupcb" in query.data:
         await query.answer()
 
@@ -427,10 +427,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('+𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽+', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('+Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ+', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
-            InlineKeyboardButton('𝗛𝗲𝗹𝗽', callback_data='help'),
-            InlineKeyboardButton('𝗔𝗯𝗼𝘂𝘁', callback_data='about')
+            InlineKeyboardButton('🛡Hᴇʟᴘ🛡', callback_data='help'),
+            InlineKeyboardButton('📓Aʙᴏᴜᴛ📓', callback_data='about')
        ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -442,14 +442,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
    
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('𝗠𝗮𝗻𝘂𝗮𝗹 𝗙𝗶𝗹𝘁𝗲𝗿', callback_data='manuelfilter'),
-            InlineKeyboardButton('𝗔𝘂𝘁𝗼 𝗙𝗶𝗹𝘁𝗲𝗿', callback_data='autofilter'),
+            InlineKeyboardButton('Mᴀɴᴜᴀʟ Fɪʟᴛᴇʀ📊', callback_data='manuelfilter'),
+            InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ📈', callback_data='autofilter'),
         ], [     
-            InlineKeyboardButton('𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗶𝗼𝗻𝘀', callback_data='coct'),
-            InlineKeyboardButton('𝗘𝘅𝘁𝗿𝗮 𝗠𝗼𝗱s', callback_data='extra')
+            InlineKeyboardButton('Cᴏɴɴᴇᴄᴛɪᴏɴs', callback_data='coct'),
+            InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅs', callback_data='extra')
         ], [
-            InlineKeyboardButton('𝗛𝗼𝗺𝗲', callback_data='start'),
-            InlineKeyboardButton('𝗦𝘁𝗮𝘁𝘂𝘀', callback_data='stats')
+            InlineKeyboardButton('Hᴏᴍᴇ🏠', callback_data='start'),
+            InlineKeyboardButton('Sᴛᴀᴛᴜs🔋', callback_data='stats')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -460,11 +460,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data == "about":
         buttons = [[
-            InlineKeyboardButton('𝗨𝗽𝗱𝗮𝘁𝗲𝘀', url='https://t.me/wudixh13'),
-            InlineKeyboardButton('𝗦𝗼𝘂𝗿𝗰𝗲', callback_data='source')
+            InlineKeyboardButton('Uᴘᴅᴀᴛᴇs📢', url='https://t.me/wudixh13'),
+            InlineKeyboardButton('Sᴏᴜʀᴄᴇ⚰', callback_data='source')
         ], [
-            InlineKeyboardButton('𝗛𝗼𝗺𝗲', callback_data='start'),
-            InlineKeyboardButton('𝗖𝗹𝗼𝘀𝗲', callback_data='close_data')
+            InlineKeyboardButton('Hᴏᴍᴇ🏠', callback_data='start'),
+            InlineKeyboardButton('Cʟᴏsᴇ🔐', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -701,8 +701,8 @@ async def auto_filter(client, msg, spoll=False):
     )
     btn.insert(1, 
          [     
-             InlineKeyboardButton(f'📟 ᴍᴏᴠɪᴇ', 'minfo'),
-             InlineKeyboardButton(f'🔰 sᴇʀɪᴇs', 'sinfo')
+             InlineKeyboardButton(f'📟 Mᴏᴠɪᴇs', 'minfo'),
+             InlineKeyboardButton(f'🔰 Sᴇʀɪᴇs', 'sinfo')
          ]
     )
 
@@ -753,7 +753,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>Hᴇʏ {message.from_user.mention}, Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Iɴ Mʏ Dᴀᴛᴀʙᴀsᴇ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ {search}.</b>"
+        cap = f"<b>Rᴇsᴜʟᴛs Aᴠᴀɪʟᴀʙʟᴇ.....</b>"
     if imdb and imdb.get('poster'):
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
