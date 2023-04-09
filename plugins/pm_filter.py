@@ -84,19 +84,6 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
-#button MOVIE AND SERIES        
-    btn.insert(0, 
-        [
-            InlineKeyboardButton(f' 🎬 {search} 🎬 ', 'qinfo')
-        ]
-    )
-    btn.insert(1, 
-         [
-             InlineKeyboardButton(f'📟 Mᴏᴠɪᴇs', 'minfo'),
-             InlineKeyboardButton(f'🔰 Sᴇʀɪᴇs', 'sinfo')
-         ]
-    )
-
     if 0 < offset <= 10:
         off_set = 0
     elif offset == 0:
@@ -416,14 +403,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "pages":
         await query.answer()
-
-#MOVIE AND SERIES BUTTON FORMAT IN SCRIPT.py    
-    elif query.data == "minfo":
-        await query.answer(text=script.MINFO, show_alert=True)
-
-    elif query.data == "sinfo":
-        await query.answer(text=script.SINFO, show_alert=True)
-        
     
     elif query.data == "start":
         buttons = [[
@@ -692,20 +671,7 @@ async def auto_filter(client, msg, spoll=False):
             ]
             for file in files
         ]
-    
-#MOVIE AND SERIES BUTTON    
-    btn.insert(0, 
-        [
-            InlineKeyboardButton(f' 🎬 {search} 🎬 ', 'qinfo')
-        ]
-    )
-    btn.insert(1, 
-         [     
-             InlineKeyboardButton(f'📟 Mᴏᴠɪᴇs', 'minfo'),
-             InlineKeyboardButton(f'🔰 Sᴇʀɪᴇs', 'sinfo')
-         ]
-    )
-
+   
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
