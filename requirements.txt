@@ -8,6 +8,6 @@ marshmallow==3.14.1
 umongo==3.0.1
 requests==2.28.2
 bs4==0.0.1
-imdbpy==2022.7.9
+imdbpy
 datetime
 pytz
