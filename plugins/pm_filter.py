@@ -626,7 +626,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 async def auto_filter(client, msg, spoll=False):
-    if not spoll:
+    if not spoll:        
         message = msg
         settings = await get_settings(message.chat.id)
         if message.text.startswith("/"): return  # ignore commands
@@ -720,6 +720,7 @@ async def auto_filter(client, msg, spoll=False):
     else:
         cap = f"<b>Rᴇsᴜʟᴛs Aᴠᴀɪʟᴀʙʟᴇ.....</b>"
     if imdb and imdb.get('poster'):
+        await msg.message.delete()
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
                                       reply_markup=InlineKeyboardMarkup(btn))
@@ -731,6 +732,7 @@ async def auto_filter(client, msg, spoll=False):
             logger.exception(e)
             await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     else:
+        await msg.message.delete()
         await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     if spoll:
         await msg.message.delete()
