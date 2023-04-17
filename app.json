@@ -16,7 +16,7 @@
       "inline"
     ],
     "website": "https://github.com/GouthamSER/EvaMaria",
-    "repository": "https://github.com/GouthamSER/EvaMaria",
+    "repository": "https://github.com/alappu280/Op_Filter_But-r",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
