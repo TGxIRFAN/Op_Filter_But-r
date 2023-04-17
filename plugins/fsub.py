@@ -8,7 +8,7 @@ from info import REQ_CHANNEL, AUTH_CHANNEL, JOIN_REQS_DB, ADMINS
 
 from logging import getLogger
 
-logger = getLogger(name)
+logger = getLogger(__name__)
 INVITE_LINK = None
 db = JoinReqs
 
