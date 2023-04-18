@@ -123,7 +123,7 @@ async def advantage_spoll_choker(bot, query):
         return await query.answer("Tʜɪs Is Nᴏᴛ Fᴏʀ Yᴏᴜ", show_alert=True)
     if movie_  == "close_spellcheck":
         return await query.message.delete()
-    movies = SPELL_CHECK.get(query.message.reply_to_message.message_id)
+    movies = SPELL_CHECK.get(query.message.reply_to_message.message.id)
     if not movies:
         return await query.answer("Yᴏᴜ ᴀʀᴇ ᴜsɪɴɢ ᴛʜɪs ғᴏʀ ᴏɴᴇ ᴏғ ᴍʏ ᴏʟᴅ ᴍᴇssᴀɢᴇ 🥺, ᴘʟᴇᴀsᴇ sᴇɴᴅ ᴛʜᴇ ʀᴇǫᴜᴇsᴛ ᴀɢᴀɪɴ😢.", show_alert=True)
     movie = movies[(int(movie_))]
@@ -718,7 +718,7 @@ async def auto_filter(client, msg, spoll=False):
     else:
         cap = f"<b>Rᴇsᴜʟᴛs Aᴠᴀɪʟᴀʙʟᴇ.....</b>"
     if imdb and imdb.get('poster'):
-        await msg.message.delete()
+        await message.delete()
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
                                       reply_markup=InlineKeyboardMarkup(btn))
@@ -735,7 +735,7 @@ async def auto_filter(client, msg, spoll=False):
         await asyncio.sleep(600)
         await master.delete()
     if spoll:
-        await msg.message.delete()
+        await message.delete()
 
 
 async def advantage_spell_chok(msg):
