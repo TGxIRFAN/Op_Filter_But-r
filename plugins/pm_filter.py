@@ -123,7 +123,7 @@ async def advantage_spoll_choker(bot, query):
         return await query.answer("Tʜɪs Is Nᴏᴛ Fᴏʀ Yᴏᴜ", show_alert=True)
     if movie_  == "close_spellcheck":
         return await query.message.delete()
-    movies = SPELL_CHECK.get(query.message.reply_to_message.message.id)
+    movies = SPELL_CHECK.get(query.message.reply_to_message.id)
     if not movies:
         return await query.answer("Yᴏᴜ ᴀʀᴇ ᴜsɪɴɢ ᴛʜɪs ғᴏʀ ᴏɴᴇ ᴏғ ᴍʏ ᴏʟᴅ ᴍᴇssᴀɢᴇ 🥺, ᴘʟᴇᴀsᴇ sᴇɴᴅ ᴛʜᴇ ʀᴇǫᴜᴇsᴛ ᴀɢᴀɪɴ😢.", show_alert=True)
     movie = movies[(int(movie_))]
