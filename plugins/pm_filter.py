@@ -128,16 +128,15 @@ async def advantage_spoll_choker(bot, query):
         return await query.answer("You are clicking on an old button which is expired.", show_alert=True)
     movie = movies[(int(movie_))]
     await query.answer('Checking for Movie in database...')
-    k = await manual_filters(bot, query.message, text=movie)
-    if k == False:
-        files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
-        if files:
-            k = (movie, files, offset, total_results)
-            await auto_filter(bot, query, k)
-        else:
-            k = await query.message.edit('This Movie Not Found In DataBase')
-            await asyncio.sleep(10)
-            await k.delete()
+    #❤️2❤️❤️
+    files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
+    if files:
+        k = (movie, files, offset, total_results)
+        await auto_filter(bot, query, k)
+    else:
+        k = await query.message.edit('This Movie Not Found In DataBase')
+        await asyncio.sleep(10)
+        await k.delete()
                 
  #Language Code Temp
 
@@ -796,7 +795,7 @@ async def advantage_spell_chok(client, msg):
     ]
     btn.append([InlineKeyboardButton(text="✘ ᴄʟᴏsᴇ ✘", callback_data=f'spol#{reqstr1}#close_spellcheck')])
     spell_check_del = await msg.reply_text(
-        text="Pleas Select One",
+        text="<b>Sᴘᴇʟʟɪɴɢ Mɪꜱᴛᴀᴋᴇ Bʀᴏ ‼️\n\nᴅᴏɴ'ᴛ ᴡᴏʀʀʏ 😊 Cʜᴏᴏꜱᴇ ᴛʜᴇ ᴄᴏʀʀᴇᴄᴛ ᴏɴᴇ ʙᴇʟᴏᴡ 👇</b>",
         reply_markup=InlineKeyboardMarkup(btn),
         reply_to_message_id=msg.id
     )
