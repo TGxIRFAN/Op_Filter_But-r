@@ -799,7 +799,7 @@ async def advantage_spell_chok(client, msg):
         reply_markup=InlineKeyboardMarkup(btn),
         reply_to_message_id=msg.id
     )
-    await asyncio.sleep(10)
+    await asyncio.sleep(600)
     await spell_check_del.delete()
 
 async def manual_filters(client, message, text=False):
