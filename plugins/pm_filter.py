@@ -756,9 +756,7 @@ async def advantage_spell_chok(client, msg):
         button = [[
         InlineKeyboardButton('🔍 sᴇᴀʀᴄʜ ᴏɴ ɢᴏᴏɢʟᴇ​ 🔎', url=f"https://www.google.com/search?q={reqst_gle}")            
         ]]
-        if NO_RESULTS_MSG:
-            await client.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, mv_rqst)))
-  
+        
         k = await msg.reply_text(
             text=("<b>sᴏʀʀʏ ɴᴏ ꜰɪʟᴇs ᴡᴇʀᴇ ꜰᴏᴜɴᴅ\n\nᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴘᴇʟʟɪɴɢ ɪɴ ɢᴏᴏɢʟᴇ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ !!</b>"),
             reply_markup=InlineKeyboardMarkup(button),
@@ -769,10 +767,14 @@ async def advantage_spell_chok(client, msg):
         return
     movielist = []
     if not movies:
+        reqst_gle = mv_rqst.replace(" ", "+")
+        button = [[
+        InlineKeyboardButton('🔍 sᴇᴀʀᴄʜ ᴏɴ ɢᴏᴏɢʟᴇ​ 🔎', url=f"https://www.google.com/search?q={reqst_gle}")   
+        ]]
         k = await msg.reply_text(
-        text=("<b>sᴏʀʀʏ ɴᴏ ꜰɪʟᴇs ᴡᴇʀᴇ ꜰᴏᴜɴᴅ\n\nᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴘᴇʟʟɪɴɢ ɪɴ ɢᴏᴏɢʟᴇ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ !!</b>"),
-        reply_markup=InlineKeyboardMarkup(button),
-        reply_to_message_id=msg.id
+            text=("<b>sᴏʀʀʏ ɴᴏ ꜰɪʟᴇs ᴡᴇʀᴇ ꜰᴏᴜɴᴅ\n\nᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴘᴇʟʟɪɴɢ ɪɴ ɢᴏᴏɢʟᴇ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ !!</b>"),
+            reply_markup=InlineKeyboardMarkup(button),
+            reply_to_message_id=msg.id
         )
         await asyncio.sleep(40)
         await k.delete()
@@ -790,12 +792,13 @@ async def advantage_spell_chok(client, msg):
     ]
     btn.append([InlineKeyboardButton(text="✘ ᴄʟᴏsᴇ ✘", callback_data=f'spol#{reqstr1}#close_spellcheck')])
     spell_check_del = await msg.reply_text(
-        text="Pleas Select any",
+        text="Pleas Select One",
         reply_markup=InlineKeyboardMarkup(btn),
         reply_to_message_id=msg.id
     )
     await asyncio.sleep(10)
     await spell_check_del.delete()
+
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id
     name = text or message.text
@@ -835,7 +838,7 @@ async def manual_filters(client, message, text=False):
                         await message.reply_cached_media(
                             fileid,
                             caption=reply_text or "",
-                            reply_markup=InlineKeyboardMarkup(button),
+                           ,reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
                 except Exception as e:
