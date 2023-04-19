@@ -45,7 +45,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
                 invite_link = INVITE_LINK
         else:
             try:
-                invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+                invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL))
             except ChatAdminRequired:
                 logger.error("Make sure Bot is admin in Forcesub channel")
                 return
