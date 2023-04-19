@@ -8,6 +8,8 @@ from info import REQ_CHANNEL, AUTH_CHANNEL, JOIN_REQS_DB, ADMINS
 
 from logging import getLogger
 
+FSUB_MODE = "req"
+
 logger = getLogger(__name__)
 INVITE_LINK = None
 db = JoinReqs
@@ -31,16 +33,17 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
     # Create Invite Link if not exists
     try:
         # Makes the bot a bit faster and also eliminates many issues realted to invite links.
-        if INVITE_LINK is None:
-            invite_link = (await bot.create_chat_invite_link(
-                chat_id=(int(AUTH_CHANNEL) if not REQ_CHANNEL and not JOIN_REQS_DB else REQ_CHANNEL),
-                creates_join_request=True if REQ_CHANNEL and JOIN_REQS_DB else False
-            )).invite_link
-            INVITE_LINK = invite_link
-            logger.info("Created Req link")
+        if FSUB_MODE == "req":    
+            if INVITE_LINK is None:
+                invite_link = (await bot.create_chat_invite_link(
+                    chat_id=(int(AUTH_CHANNEL) if not REQ_CHANNEL and not JOIN_REQS_DB else REQ_CHANNEL),
+                    creates_join_request=True if REQ_CHANNEL and JOIN_REQS_DB else False
+                )).invite_link
+                INVITE_LINK = invite_link
+                logger.info("Created Req link")
+            else:
+                invite_link = INVITE_LINK
         else:
-            invite_link = INVITE_LINK
-
     except FloodWait as e:
         await asyncio.sleep(e.x)
         fix_ = await ForceSub(bot, update, file_id)
