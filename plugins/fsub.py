@@ -44,6 +44,11 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             else:
                 invite_link = INVITE_LINK
         else:
+            try:
+                invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+            except ChatAdminRequired:
+                logger.error("Make sure Bot is admin in Forcesub channel")
+                return
     except FloodWait as e:
         await asyncio.sleep(e.x)
         fix_ = await ForceSub(bot, update, file_id)
